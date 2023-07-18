@@ -22,7 +22,7 @@ import { CatsModule } from './cats/cats.module';
     }),
     CatsModule,
   ],
-  controllers: [AppController, CatController],
-  providers: [AppService, CatsService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}

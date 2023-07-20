@@ -8,7 +8,7 @@ import { CreateCatDto } from './dto/CreateCatDto';
 export class CatsService {
   constructor(
     @InjectRepository(Cat)
-    private catrepository: Repository<Cat>,
+    private catRepository: Repository<Cat>,
   ) {}
 
   async create(catDto: CreateCatDto): Promise<Cat> {
@@ -16,7 +16,11 @@ export class CatsService {
     cat.age = catDto.age;
     cat.breed = catDto.breed;
     cat.name = catDto.name;
-    return this.catrepository.save(cat);
+    return this.catRepository.save(catDto);
+  }
+
+  async listAll(): Promise<Cat[]> {
+    return this.catRepository.find();
   }
 
   /*findAll(): Cat[] {

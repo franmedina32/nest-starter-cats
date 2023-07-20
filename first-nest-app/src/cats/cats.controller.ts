@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post, Get } from '@nestjs/common';
 import { CreateCatDto } from './dto/CreateCatDto';
 import { CatsService } from './cats.service';
 import { Cat } from 'src/cats/entitys/cat.entity';
@@ -10,5 +10,10 @@ export class CatController {
   @Post()
   create(@Body() ccDto: CreateCatDto): Promise<Cat> {
     return this.catService.create(ccDto);
+  }
+
+  @Get()
+  findAll(): Promise<Cat[]> {
+    return this.catService.listAll();
   }
 }
